@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- PWA META TAGS LENGKAP -->
+  <meta name="application-name" content="Undangan Pernikahan">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Undangan Pernikahan">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-TileColor" content="#d4a76a">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="theme-color" content="#d4a76a">
+
+  <!-- APPLE SPECIFIC ICONS -->
+  <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/icon-192x192.png">
+
+  <!-- MANIFEST dengan atribut crossorigin -->
+  <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+
+  <!-- FAVICON untuk browser biasa -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  
+  <!-- Meta Tags untuk Link Preview -->
+  <meta property="og:title" content="Undangan Pernikahan - Supriyo Widodo & Ika Puji Kurnia">
+  <meta property="og:description" content="Dengan penuh rasa syukur, kami mengundang Anda untuk menyaksikan pernikahan putra-putri kami. Semoga Allah SWT meridhoi pernikahan ini.">
+  <meta property="og:image" content="https://lamonganmerdesa.github.io/undangan-pernikahan/cover_baru.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cover Undangan Pernikahan">
+  <meta property="og:url" content="https://lamonganmerdesa.github.io/undangan-pernikahan/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Undangan Pernikahan">
+  <meta property="fb:app_id" content="1234567890">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:secure_url" content="https://lamonganmerdesa.github.io/undangan-pernikahan/cover_baru.jpg">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Undangan Pernikahan - Supriyo Widodo & Ika Puji Kurnia">
+  <meta name="twitter:description" content="Dengan penuh rasa syukur, kami mengundang Anda untuk menyaksikan pernikahan putra-putri kami.">
+  <meta name="twitter:image" content="https://lamonganmerdesa.github.io/undangan-pernikahan/cover_baru.jpg">
+  
+  <!-- Fallback -->
+  <meta itemprop="image" content="https://lamonganmerdesa.github.io/undangan-pernikahan/cover_baru.jpg">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
+  
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <title>Undangan Pernikahan - Supriyo Widodo & Ika Puji Kurnia</title>
+  
+  <style>
+    /* ========== RESET & BASE ========== */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html, body { 
+      height: 100%; 
+      width: 100%; 
+      overflow: hidden; 
+      background: #000428; 
+      position: fixed; 
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* ========== iOS SAFE AREAS ========== */
+    @supports(padding: max(0px)) {
+      body {
+        padding-top: max(env(safe-area-inset-top), 0px);
+        padding-bottom: max(env(safe-area-inset-bottom), 0px);
+        padding-left: max(env(safe-area-inset-left), 0px);
+        padding-right: max(env(safe-area-inset-right), 0px);
+      }
+      
+      #soundBtn {
+        top: max(20px, env(safe-area-inset-top, 20px));
+      }
+    }
+    
+    /* ========== BACKGROUND EFFECTS ========== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 50% 20%, #1a0f3d 0%, #000428 70%);
+      pointer-events: none;
+    }
+    
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(100,180,255,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(180,255,180,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    canvas#particles {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    /* ========== WRAPPER & SWIPER ========== */
+    .wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: -webkit-fill-available;
+      height: fill-available;
+      background: #000;
+      z-index: 10;
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .swiper, .swiper-slide {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      position: relative;
+    }
+    
+    /* ========== VIDEO CONTAINERS ========== */
+    .video-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+    
+    .video-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(232, 220, 194, 0.3);
+      border-top: 3px solid #e8dcc2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      z-index: 5;
+      transition: opacity 0.3s;
+    }
+    
+    .video-loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+      animation: none;
+    }
+    
+    /* ========== SCENE TEXT ANIMATIONS ========== */
+    .scene-text {
+      position: absolute;
+      z-index: 15;
+      text-align: center;
+      width: 90%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Scheherazade New', serif;
+      color: transparent;
+      background: linear-gradient(45deg, #e8dcc2, #ffd700, #e8dcc2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(232,220,194,0.6);
+      opacity: 0.9;
+      pointer-events: none;
+      animation: fadeInOut 8s infinite;
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.9; }
+      20%, 80% { opacity: 1; }
+    }
+    
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    .text1 { bottom: 22%; font-size: clamp(32px, 8vw, 68px); letter-spacing: 4px; }
+    .text2 { top: 22%; font-size: clamp(28px, 7vw, 60px); }
+    .text3 { top: 18%; font-size: clamp(34px, 8vw, 70px); }
+    .text4 { bottom: 25%; font-size: clamp(30px, 7.5vw, 62px); }
+    
+    /* ========== BUTTONS STYLES ========== */
+    .btn {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      padding: 15px 44px;
+      margin: 5px;
+      border: 1.5px solid #e8dcc2;
+      color: #e8dcc2;
+      border-radius: 60px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      text-decoration: none;
+      display: inline-block;
+      transition: .4s;
+      cursor: pointer;
+      text-align: center;
+      min-width: 200px;
+    }
+    
+    .btn:hover {
+      background: rgba(232,220,194,0.3);
+      box-shadow: 0 0 40px rgba(232,220,194,0.8);
+      transform: scale(1.05);
+    }
+    
+    /* ========== FINAL SCENE (UCAPAN & MAPS) ========== */
+    .final-overlay {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      z-index: 20;
+    }
+    
+    .additional-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-top: 10px;
+    }
+    
+    /* ========== MAPS SCENE ========== */
+    .scene6-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      background: #000;
+    }
+    
+    .map-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.9);
+      color: #e8dcc2;
+      padding: 15px;
+      text-align: center;
+      z-index: 25;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(232,220,194,0.3);
+    }
+    
+    .map-overlay h3 {
+      font-family: 'Scheherazade New', serif;
+      margin-bottom: 5px;
+      font-size: 1.3rem;
+    }
+    
+    .map-overlay p {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    /* ========== MUSIC CONTROL ========== */
+    #soundBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid #e8dcc2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(232,220,194,0.4);
+      transition: all .6s;
+    }
+    
+    #soundBtn:hover { transform: scale(1.1); }
+    #soundBtn.playing { opacity: 0; pointer-events: none; }
+    
+    /* ========== SWIPER PAGINATION ========== */
+    .swiper-pagination {
+      position: absolute;
+      right: 20px !important;
+      left: auto !important;
+      width: auto !important;
+      transform: translateY(-50%);
+    }
+    
+    .swiper-pagination-bullet {
+      background: #e8dcc2;
+      opacity: 0.5;
+      width: 10px;
+      height: 10px;
+      margin: 8px 0 !important;
+    }
+    
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #ffd700;
+    }
+    
+    /* ========== LOADING SCREEN IMPROVED ========== */
+    .loading {
+      position: fixed;
+      inset: 0;
+      background: #000428;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    .loading-text {
+      color: #e8dcc2;
+      font-family: 'EB Garamond', serif;
+      font-size: 24px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    
+    .spinner {
+      border: 5px solid rgba(232,220,194,0.1);
+      border-top: 5px solid #e8dcc2;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    
+    /* ========== DESKTOP STYLES ========== */
+    @media (min-width: 769px) and (min-aspect-ratio: 9/16) {
+      .wrapper {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 56.25vh; /* 9:16 aspect ratio */
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 177.78vw;
+        border-radius: 20px;
+        box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        overflow: hidden;
+      }
+    }
+    
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .wrapper { 
+        width: 100vw; 
+        height: 100vh; 
+        height: -webkit-fill-available;
+        max-width: 100%; 
+        border-radius: 0;
+      }
+      
+      .scene-text { width: 95%; }
+      .text1 { bottom: 20%; font-size: clamp(28px, 7vw, 40px); }
+      .text2 { top: 18%; font-size: clamp(24px, 6vw, 36px); }
+      .text3 { top: 15%; font-size: clamp(28px, 7vw, 44px); }
+      .text4 { bottom: 22%; font-size: clamp(26px, 6.5vw, 38px); }
+      .final-overlay { bottom: 40px; }
+      .btn { font-size: 16px; padding: 12px 30px; min-width: 180px; }
+      .additional-buttons { max-width: 250px; }
+      .map-overlay h3 { font-size: 1.1rem; }
+      .map-overlay p { font-size: 0.8rem; }
+    }
+    
+    @media (max-height: 700px) {
+      .final-overlay { bottom: 30px; }
+      .btn { padding: 10px 25px; font-size: 15px; }
+    }
+    
+    /* ========== TAP INSTRUCTION ========== */
+    #tapInstruction {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.8);
+      color: #e8dcc2;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      z-index: 99999;
+      backdrop-filter: blur(10px);
+      border: 2px solid #e8dcc2;
+      animation: pulse 2s infinite;
+      text-align: center;
+    }
+    
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.9; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+    
+    /* ========== HIDE SCROLLBARS ========== */
+    body::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Particles Canvas -->
+<canvas id="particles"></canvas>
+
+<!-- Main Wrapper -->
+<div class="wrapper">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      
+      <!-- Scene 1 -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading1"></div>
+          <video 
+            src="videos/1-optimized.mp4"  
+            poster="posters/poster1.jpg"
+            preload="auto"
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            width="100%"
+            height="100%"
+            autoplay>
+          </video>          
+        </div>
+      </div>
+      
+      <!-- Scene 2 -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading2"></div>
+          <video 
+            src="videos/2-optimized.mp4"  
+            poster="posters/poster2.jpg"
+            preload="auto"  
+            muted
+            loop
+            playsinline
+            webkit-playsinline>
+          </video>          
+        </div>
+      </div>
+      
+      <!-- Scene 3 -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading3"></div>
+          <video 
+            src="videos/3-optimized.mp4"  
+            poster="posters/poster3.jpg"
+            preload="auto"  
+            muted
+            loop
+            playsinline
+            webkit-playsinline>
+          </video>          
+        </div>
+      </div>
+      
+      <!-- Scene 4 -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading4"></div>
+          <video 
+            src="videos/4-optimized.mp4"  
+            poster="posters/poster4.jpg"
+            preload="auto"  
+            muted
+            loop
+            playsinline
+            webkit-playsinline>
+          </video>          
+        </div>
+      </div>
+      
+      <!-- Scene 5 -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading5"></div>
+          <video 
+            src="videos/5-optimized.mp4"  
+            poster="posters/poster5.jpg"
+            preload="auto"  
+            muted
+            loop
+            playsinline
+            webkit-playsinline>
+          </video>
+        </div>
+      </div>
+      
+      <!-- Scene 6 - Ucapan & Tombol -->
+      <div class="swiper-slide">
+        <div class="video-container">
+          <div class="video-loading" id="videoLoading6"></div>
+          <video 
+            src="videos/6-optimized.mp4"  
+            poster="posters/poster6.jpg"
+            preload="auto"  
+            muted
+            loop
+            playsinline
+            webkit-playsinline>
+          </video>
+        </div>
+        
+        <div class="final-overlay">                        
+          <div class="additional-buttons">
+            <a href="https://wa.me/6285745137795?text=Assalamu'alaikum%2C%20selamat%20menikah%20untuk%20Supriyo%20Widodo%20%26%20Ika%20Puji%20Kurnia.%20Semoga%20menjadi%20keluarga%20yang%20sakinah%2C%20mawaddah%2C%20warahmah.%20%F0%9F%99%8F" 
+               target="_blank" class="btn">
+               💌 Kirim Ucapan via WhatsApp
+            </a>
+            <a href="https://maps.app.goo.gl/GhgrmHyuLwuy1eXp9" 
+               target="_blank" class="btn">
+               🗺️ Lihat Lokasi Acara
+            </a>
+            <button onclick="shareUndangan()" class="btn">
+              📱 Bagikan Undangan
+            </button>
+            <button onclick="showMapSlide()" class="btn">
+              🗺️ Buka Peta Lokasi
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scene 7 - Google Maps -->
+      <div class="swiper-slide">
+        <div class="scene6-content">
+          <div class="map-container">
+            <iframe 
+				src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d988.1603597074826!2d112.0791472429903!3d-7.827721286658983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNDknNDEuMCJTIDExMsKwMDQnNDkuMyJF!5e0!3m2!1sid!2sid!4v1764759811023!5m2!1sid!2sid"
+				allowfullscreen="" 
+				loading="lazy" 
+				referrerpolicy="no-referrer-when-downgrade"
+				title="Lokasi Resepsi Pernikahan">
+			</iframe>
+            <div class="map-overlay">
+              <h3>Rumah Supriyo Widodo</h3>
+              <p>Lokasi resepsi pernikahan Supriyo Widodo & Ika Puji Kurnia</p>
+              <p style="margin-top: 8px; font-size: 0.8rem;">
+                <a href="https://maps.app.goo.gl/GhgrmHyuLwuy1eXp9" 
+                   target="_blank" 
+                   style="color: #ffd700; text-decoration: none;">
+                  📍 Buka di Google Maps
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- Music Control -->
+<div id="soundBtn" onclick="playMusic()">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8dcc2" stroke-width="2.5">
+    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    <path d="M15.93 7.07a6 6 0 0 1 0 8.48"/>
+  </svg>
+</div>
+
+<!-- Background Music -->
+<audio id="bgmusic" loop preload="metadata">
+  <source src="musik.mp3" type="audio/mp3">
+</audio>
+
+<!-- External Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- PERBAIKAN SCRIPT UTAMA -->
+<script>
+  // ========== GLOBAL VARIABLES ==========
+  let swiper;
+  const audio = document.getElementById('bgmusic');
+  const soundBtn = document.getElementById('soundBtn');
+  let isInitialized = false;
+  
+  // ========== LOADING MANAGER - SIMPLIFIED ==========
+  function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+      loadingScreen.classList.add('hidden');
+      console.log('✅ Loading screen hidden');
+      
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    }
+  }
+  
+  // ========== VIDEO HANDLER - FIXED ==========
+  function handleVideos() {
+    console.log('🎬 Handling videos...');
+    
+    const videos = document.querySelectorAll('video');
+    console.log(`Found ${videos.length} videos`);
+    
+    videos.forEach((video, index) => {
+      const videoId = index + 1;
+      const loadingSpinner = document.getElementById(`videoLoading${videoId}`);
+      
+      // Check if video is already loaded
+      if (video.readyState >= 2) { // HAVE_CURRENT_DATA or better
+        console.log(`Video ${videoId} already loaded`);
+        if (loadingSpinner) {
+          loadingSpinner.classList.add('hidden');
+        }
+      } else {
+        // Wait for video to load
+        video.addEventListener('loadeddata', () => {
+          console.log(`✅ Video ${videoId} loaded`);
+          if (loadingSpinner) {
+            loadingSpinner.classList.add('hidden');
+          }
+          
+          // Auto-play first video
+          if (index === 0) {
+            setTimeout(() => {
+              video.play().catch(e => {
+                console.log(`First video autoplay blocked: ${e.message}`);
+              });
+            }, 300);
+          }
+        }, { once: true });
+        
+        // Handle video errors
+        video.addEventListener('error', (e) => {
+          console.error(`❌ Video ${videoId} error:`, video.error);
+          if (loadingSpinner) {
+            loadingSpinner.classList.add('hidden');
+          }
+        });
+      }
+    });
+    
+    // Play first video immediately
+    const firstVideo = videos[0];
+    if (firstVideo) {
+      setTimeout(() => {
+        firstVideo.play().catch(e => {
+          console.log('First video autoplay blocked, waiting for interaction');
+        });
+      }, 500);
+    }
+  }
+  
+  // ========== SWIPER INITIALIZATION - FIXED ==========
+  function initSwiper() {
+    console.log('🔄 Initializing Swiper...');
+    
+    swiper = new Swiper('.swiper', {
+      direction: 'vertical',
+      loop: false,
+      speed: 800,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'bullets'
+      },
+      allowTouchMove: true,
+      on: {
+        init: function() {
+          console.log('✅ Swiper initialized');
+          // Hide loading spinners for all loaded videos
+          document.querySelectorAll('video').forEach((video, index) => {
+            if (video.readyState >= 2) {
+              const spinner = document.getElementById(`videoLoading${index + 1}`);
+              if (spinner) spinner.classList.add('hidden');
+            }
+          });
+        },
+        slideChangeTransitionStart: function() {
+          // Pause previous video
+          const prevSlide = this.slides[this.previousIndex];
+          const prevVideo = prevSlide.querySelector('video');
+          if (prevVideo && !prevVideo.paused) {
+            prevVideo.pause();
+          }
+        },
+        slideChangeTransitionEnd: function() {
+          const currentSlide = this.slides[this.activeIndex];
+          const currentVideo = currentSlide.querySelector('video');
+          
+          // Ensure video is visible and try to play
+          if (currentVideo) {
+            // Make sure video opacity is 1
+            currentVideo.style.opacity = '1';
+            
+            // If video is loaded, play it
+            if (currentVideo.readyState >= 2) {
+              currentVideo.play().catch(e => {
+                console.log(`Video ${this.activeIndex + 1} play error:`, e.message);
+              });
+            } else {
+              // If video not loaded yet, wait for it
+              currentVideo.addEventListener('loadeddata', () => {
+                currentVideo.play().catch(e => {
+                  console.log(`Video ${this.activeIndex + 1} play error after load:`, e.message);
+                });
+              }, { once: true });
+            }
+          }
+          
+          // Refresh maps if needed
+          if (this.activeIndex === 6) {
+            setTimeout(refreshMaps, 300);
+          }
+        }
+      }
+    });
+  }
+  
+  // ========== MUSIC CONTROL ==========
+  function initMusic() {
+    console.log('🎵 Initializing music...');
+    
+    audio.volume = 0.7;
+    
+    // Try to play music automatically
+    setTimeout(() => {
+      audio.play().then(() => {
+        console.log('✅ Music playing');
+        soundBtn.classList.add('playing');
+      }).catch(e => {
+        console.log('⚠️ Music autoplay blocked');
+        soundBtn.classList.remove('playing');
+      });
+    }, 1000);
+    
+    // Click anywhere to start music
+    document.addEventListener('click', function initAudioOnClick() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          soundBtn.classList.add('playing');
+        }).catch(e => console.log('Music play error:', e));
+      }
+      document.removeEventListener('click', initAudioOnClick);
+    }, { once: true });
+  }
+  
+  function playMusic() {
+    if (audio.paused) {
+      audio.play().then(() => {
+        soundBtn.classList.add('playing');
+      });
+    } else {
+      audio.pause();
+      soundBtn.classList.remove('playing');
+    }
+  }
+  
+  // ========== MAPS FUNCTIONS ==========
+  function showMapSlide() {
+    if (swiper) {
+      swiper.slideTo(6, 800);
+      setTimeout(refreshMaps, 500);
+    }
+  }
+  
+  function refreshMaps() {
+    const mapIframe = document.querySelector('.map-container iframe');
+    if (mapIframe) {
+      const src = mapIframe.src;
+      mapIframe.src = src;
+      console.log('🗺️ Maps refreshed');
+    }
+  }
+  
+  // ========== SHARE FUNCTION ==========
+  function shareUndangan() {
+    const shareData = {
+      title: 'Undangan Pernikahan - Supriyo Widodo & Ika Puji Kurnia',
+      text: 'Saya mengundang Anda untuk menyaksikan pernikahan Supriyo Widodo & Ika Puji Kurnia',
+      url: window.location.href
+    };
+    
+    if (navigator.share) {
+      navigator.share(shareData)
+        .then(() => console.log('✅ Undangan berhasil dibagikan'))
+        .catch(error => console.log('❌ Error sharing:', error));
+    } else {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  }
+  
+  // ========== PARTICLES ANIMATION ==========
+  function initParticles() {
+    const canvas = document.getElementById('particles');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    
+    const particles = Array.from({ length: 60 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2.5 + 0.8,
+      speedY: Math.random() * 0.6 + 0.2,
+      opacity: Math.random() * 0.5 + 0.3,
+      swing: Math.random() * Math.PI * 2
+    }));
+    
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(p => {
+        ctx.fillStyle = `rgba(232,220,194,${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        p.y += p.speedY;
+        p.swing += 0.05;
+        p.x += Math.sin(p.swing) * 0.4;
+        
+        if (p.y > canvas.height + 10) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+      });
+      
+      requestAnimationFrame(drawParticles);
+    }
+    
+    drawParticles();
+    window.addEventListener('resize', resizeCanvas);
+  }
+  
+  // ========== SERVICE WORKER ==========
+  function initServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('✅ ServiceWorker registered:', registration.scope);
+        })
+        .catch(error => {
+          console.log('❌ ServiceWorker registration failed:', error);
+        });
+    }
+  }
+  
+  // ========== PWA FEATURES ==========
+  function initPWAFeatures() {
+    // Check if running in PWA mode
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                        window.navigator.standalone === true;
+    
+    if (isStandalone) {
+      document.body.classList.add('pwa-mode');
+      console.log('✅ Running in PWA mode');
+    } else {
+      console.log('🌐 Running in browser mode');
+    }
+    
+    // Hide address bar on mobile
+    setTimeout(() => {
+      window.scrollTo(0, 1);
+    }, 100);
+  }
+  
+  // ========== INITIALIZE EVERYTHING ==========
+  function initializeApp() {
+    if (isInitialized) return;
+    isInitialized = true;
+    
+    console.log('🚀 Initializing Wedding Invitation...');
+    
+    // 1. Handle videos (hide loading spinners, auto-play first)
+    handleVideos();
+    
+    // 2. Initialize Swiper
+    initSwiper();
+    
+    // 3. Initialize other components
+    initParticles();
+    initMusic();
+    initServiceWorker();
+    initPWAFeatures();
+    
+    console.log('✅ App initialized');
+  }
+  
+  // ========== WINDOW LOAD EVENT ==========
+  window.addEventListener('load', function() {
+    console.log('📦 Window loaded');
+    
+    // Hide loading screen after 1.5 seconds MAX
+    setTimeout(hideLoadingScreen, 1500);
+    
+    // Initialize app after a short delay
+    setTimeout(initializeApp, 500);
+  });
+  
+  // ========== FALLBACK TIMEOUT ==========
+  // Ensure loading screen disappears even if something fails
+  setTimeout(() => {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+      console.log('⚠️ Force hiding loading screen (timeout)');
+      hideLoadingScreen();
+      initializeApp();
+    }
+  }, 3000);
+  
+  // ========== PAGE VISIBILITY ==========
+  document.addEventListener('visibilitychange', function() {
+    if (!swiper) return;
+    
+    const currentSlide = swiper.slides[swiper.activeIndex];
+    const currentVideo = currentSlide.querySelector('video');
+    
+    if (document.hidden) {
+      // Pause when tab not active
+      if (currentVideo && !currentVideo.paused) {
+        currentVideo.pause();
+      }
+      if (!audio.paused) {
+        audio.pause();
+      }
+    } else {
+      // Resume when tab becomes active
+      if (currentVideo && currentVideo.readyState >= 2) {
+        currentVideo.play().catch(e => console.log('Video resume error:', e));
+      }
+    }
+  });
+  
+  // ========== PREVENT DEFAULT BEHAVIORS ==========
+  // Prevent zoom
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length > 1) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  // Prevent pull-to-refresh
+  document.addEventListener('touchmove', function(e) {
+    if (e.scale !== 1) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  // Prevent context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  
+  console.log('🎯 Wedding Invitation Script Loaded');
+</script>
+</body>
+</html>
